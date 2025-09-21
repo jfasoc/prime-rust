@@ -36,7 +36,9 @@ pub fn next_prime(n: &BigUint) -> BigUint {
 
     let mut current = n.clone();
     // If the number is even, and not 2, start with the next odd number.
-    if &current != &ToBigUint::to_biguint(&2u64).unwrap() && &current % 2u64 == ToBigUint::to_biguint(&0u64).unwrap() {
+    if current != ToBigUint::to_biguint(&2u64).unwrap()
+        && &current % 2u64 == ToBigUint::to_biguint(&0u64).unwrap()
+    {
         current += 1u64;
     }
 
@@ -45,7 +47,7 @@ pub fn next_prime(n: &BigUint) -> BigUint {
             return current;
         }
         // For 2, the next prime is 3.
-        if &current == &ToBigUint::to_biguint(&2u64).unwrap() {
+        if current == ToBigUint::to_biguint(&2u64).unwrap() {
             current += 1u64;
         } else {
             current += 2u64;
@@ -75,13 +77,37 @@ mod tests {
 
     #[test]
     fn test_next_prime() {
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&0).unwrap()), ToBigUint::to_biguint(&2).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&1).unwrap()), ToBigUint::to_biguint(&2).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&2).unwrap()), ToBigUint::to_biguint(&2).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&3).unwrap()), ToBigUint::to_biguint(&3).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&4).unwrap()), ToBigUint::to_biguint(&5).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&10).unwrap()), ToBigUint::to_biguint(&11).unwrap());
-        assert_eq!(next_prime(&ToBigUint::to_biguint(&13).unwrap()), ToBigUint::to_biguint(&13).unwrap());
-        assert_eq!(next_prime(&"104740".parse().unwrap()), "104743".parse().unwrap());
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&0).unwrap()),
+            ToBigUint::to_biguint(&2).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&1).unwrap()),
+            ToBigUint::to_biguint(&2).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&2).unwrap()),
+            ToBigUint::to_biguint(&2).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&3).unwrap()),
+            ToBigUint::to_biguint(&3).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&4).unwrap()),
+            ToBigUint::to_biguint(&5).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&10).unwrap()),
+            ToBigUint::to_biguint(&11).unwrap()
+        );
+        assert_eq!(
+            next_prime(&ToBigUint::to_biguint(&13).unwrap()),
+            ToBigUint::to_biguint(&13).unwrap()
+        );
+        assert_eq!(
+            next_prime(&"104740".parse().unwrap()),
+            "104743".parse().unwrap()
+        );
     }
 }

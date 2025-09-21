@@ -14,14 +14,14 @@ fn main() {
     match num_str.parse::<BigUint>() {
         Ok(num) => {
             if is_prime(&num) {
-                println!("{} is prime", num);
+                println!("{num} is prime");
             } else {
                 let next = next_prime(&num);
-                println!("{} is not prime, next prime is {}", num, next);
+                println!("{num} is not prime, next prime is {next}");
             }
         }
         Err(_) => {
-            eprintln!("Error: '{}' is not a valid non-negative integer.", num_str);
+            eprintln!("Error: '{num_str}' is not a valid non-negative integer.");
             std::process::exit(1);
         }
     }
