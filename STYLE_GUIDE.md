@@ -86,3 +86,33 @@ Use `Result<T, E>` for functions that can fail. Avoid using `unwrap()` or `expec
 ## Testing
 
 All new features should be accompanied by tests. Use `#[cfg(test)]` to create a test module in the same file as the code being tested. Use descriptive test names.
+
+## Code Coverage
+
+We require a high level of code coverage to ensure that our code is well-tested and reliable. The CI is configured to enforce the following coverage rules:
+
+*   **Project Coverage**: The total code coverage of the project must be at least 95%.
+*   **New Code Coverage**: Any new code added in a pull request must be 100% covered by tests.
+
+### Generating a Coverage Report
+
+To generate a coverage report locally, you can use the following steps. This requires the `llvm-tools-preview` component and `grcov`.
+
+1.  **Install `llvm-tools-preview` and `grcov`**:
+    ```bash
+    rustup component add llvm-tools-preview
+    cargo install grcov
+    ```
+
+2.  **Run tests with coverage enabled**:
+    From the `next_prime_finder` directory, run:
+    ```bash
+    CARGO_INCREMENTAL=0 RUSTFLAGS="-Cinstrument-coverage" RUSTDOCFLAGS="-Cinstrument-coverage" LLVM_PROFILE_FILE="cargo-test-%p-%m.profraw" cargo test
+    ```
+
+3.  **Generate the report**:
+    From the `next_prime_finder` directory, run:
+    ```bash
+    grcov . -s . --binary-path ./target/debug/ -t html --branch --ignore-not-existing -o ./coverage/
+    ```
+    This will generate an HTML report in the `next_prime_finder/coverage/` directory. You can open the `index.html` file in that directory to view the report.
