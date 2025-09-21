@@ -6,3 +6,6 @@ edition = "2024"
 [dependencies]
 is_prime = "2.0.9"
 num-bigint = "0.4.6"
+
+[dev-dependencies]
+assert_cmd = "2.0"
