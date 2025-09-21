@@ -35,8 +35,8 @@ pub fn next_prime(n: &BigUint) -> BigUint {
     }
 
     let mut current = n.clone();
-    // If the number is even, and not 2, start with the next odd number.
-    if current != BigUint::from(2u64) && &current % 2u64 == BigUint::from(0u64) {
+    // If the number is even, start with the next odd number.
+    if &current % 2u64 == BigUint::from(0u64) {
         current += 1u64;
     }
 
@@ -44,12 +44,7 @@ pub fn next_prime(n: &BigUint) -> BigUint {
         if is_prime(&current) {
             return current;
         }
-        // For 2, the next prime is 3.
-        if current == BigUint::from(2u64) {
-            current += 1u64;
-        } else {
-            current += 2u64;
-        }
+        current += 2u64;
     }
 }
 
