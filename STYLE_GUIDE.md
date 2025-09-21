@@ -6,6 +6,10 @@ This document outlines the coding style and standards for this Rust project. We 
 
 We use `rustfmt` to automatically format our code. All code must be formatted with `rustfmt` before being committed.
 
+### Indentation
+
+We use 4 spaces for indentation. Tabs are not allowed. The `rustfmt.toml` file is configured to enforce this.
+
 ### Installation
 
 If you don't have `rustfmt` installed, you can install it with:
