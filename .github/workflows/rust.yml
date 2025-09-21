@@ -43,6 +43,8 @@ jobs:
           components: llvm-tools-preview
       - name: Install grcov
         run: cargo install grcov
+      - name: Install lcov
+        run: sudo apt-get update && sudo apt-get install -y lcov
       - name: Run tests with coverage
         env:
           CARGO_INCREMENTAL: "0"
@@ -60,6 +62,8 @@ jobs:
             --branch \
             --ignore-not-existing \
             -o ../lcov.info
+      - name: Filter coverage report
+        run: lcov --remove lcov.info '*/.cargo/registry/src/*' -o lcov.info
       - name: Upload to codecov.io
         uses: codecov/codecov-action@v5
         with:
