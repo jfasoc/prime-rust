@@ -36,9 +36,7 @@ pub fn next_prime(n: &BigUint) -> BigUint {
 
     let mut current = n.clone();
     // If the number is even, and not 2, start with the next odd number.
-    if current != BigUint::from(2u64)
-        && &current % 2u64 == BigUint::from(0u64)
-    {
+    if current != BigUint::from(2u64) && &current % 2u64 == BigUint::from(0u64) {
         current += 1u64;
     }
 
@@ -76,34 +74,13 @@ mod tests {
 
     #[test]
     fn test_next_prime() {
-        assert_eq!(
-            next_prime(&BigUint::from(0u64)),
-            BigUint::from(2u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(1u64)),
-            BigUint::from(2u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(2u64)),
-            BigUint::from(2u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(3u64)),
-            BigUint::from(3u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(4u64)),
-            BigUint::from(5u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(10u64)),
-            BigUint::from(11u64)
-        );
-        assert_eq!(
-            next_prime(&BigUint::from(13u64)),
-            BigUint::from(13u64)
-        );
+        assert_eq!(next_prime(&BigUint::from(0u64)), BigUint::from(2u64));
+        assert_eq!(next_prime(&BigUint::from(1u64)), BigUint::from(2u64));
+        assert_eq!(next_prime(&BigUint::from(2u64)), BigUint::from(2u64));
+        assert_eq!(next_prime(&BigUint::from(3u64)), BigUint::from(3u64));
+        assert_eq!(next_prime(&BigUint::from(4u64)), BigUint::from(5u64));
+        assert_eq!(next_prime(&BigUint::from(10u64)), BigUint::from(11u64));
+        assert_eq!(next_prime(&BigUint::from(13u64)), BigUint::from(13u64));
         assert_eq!(
             next_prime(&"104740".parse().unwrap()),
             "104743".parse().unwrap()

@@ -1,7 +1,7 @@
 # Next Prime Finder
 
-[![Rust](https://github.com/USERNAME/REPONAME/actions/workflows/rust.yml/badge.svg)](https://github.com/USERNAME/REPONAME/actions/workflows/rust.yml)
-[![codecov](https://codecov.io/gh/USERNAME/REPONAME/branch/main/graph/badge.svg)](https://codecov.io/gh/USERNAME/REPONAME)
+[![Rust](https://github.com/jfasoc/prime-rust/actions/workflows/rust.yml/badge.svg)](https://github.com/jfasoc/prime-rust/actions/workflows/rust.yml)
+[![codecov](https://codecov.io/gh/jfasoc/prime-rust/branch/main/graph/badge.svg)](https://codecov.io/gh/jfasoc/prime-rust)
 
 A simple command-line tool written in Rust to find the next prime number.
 
@@ -13,8 +13,8 @@ This tool takes a non-negative integer as input and checks if it is a prime numb
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/USERNAME/REPONAME.git
-    cd REPONAME/next_prime_finder
+    git clone https://github.com/jfasoc/prime-rust.git
+    cd prime-rust/next_prime_finder
     ```
 2.  Build the project:
     ```sh
@@ -50,5 +50,3 @@ $ cargo run -- 7
 7 is 1 digit long
 7 is prime
 ```
-
-**Note:** Please replace `USERNAME` and `REPONAME` in the badges and installation instructions with your actual GitHub username and repository name.
