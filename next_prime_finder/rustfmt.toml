@@ -1,0 +1,8 @@
+# Use a consistent line width
+max_width = 100
+
+# Use tabs for indentation
+hard_tabs = true
+
+# Do not reorder imports
+reorder_imports = false
