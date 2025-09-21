@@ -1,4 +1,4 @@
-use num_bigint::{BigUint, ToBigUint};
+use num_bigint::BigUint;
 use is_prime as is_prime_ext;
 
 /// Checks if a number is prime.
@@ -30,14 +30,14 @@ pub fn is_prime(n: &BigUint) -> bool {
 ///
 /// * The next prime number as a `BigUint`.
 pub fn next_prime(n: &BigUint) -> BigUint {
-    if n <= &ToBigUint::to_biguint(&2u64).unwrap() {
-        return ToBigUint::to_biguint(&2u64).unwrap();
+    if n <= &BigUint::from(2u64) {
+        return BigUint::from(2u64);
     }
 
     let mut current = n.clone();
     // If the number is even, and not 2, start with the next odd number.
-    if current != ToBigUint::to_biguint(&2u64).unwrap()
-        && &current % 2u64 == ToBigUint::to_biguint(&0u64).unwrap()
+    if current != BigUint::from(2u64)
+        && &current % 2u64 == BigUint::from(0u64)
     {
         current += 1u64;
     }
@@ -47,7 +47,7 @@ pub fn next_prime(n: &BigUint) -> BigUint {
             return current;
         }
         // For 2, the next prime is 3.
-        if current == ToBigUint::to_biguint(&2u64).unwrap() {
+        if current == BigUint::from(2u64) {
             current += 1u64;
         } else {
             current += 2u64;
@@ -58,52 +58,51 @@ pub fn next_prime(n: &BigUint) -> BigUint {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use num_bigint::ToBigUint;
 
     #[test]
     fn test_is_prime() {
-        assert!(!is_prime(&ToBigUint::to_biguint(&0).unwrap()));
-        assert!(!is_prime(&ToBigUint::to_biguint(&1).unwrap()));
-        assert!(is_prime(&ToBigUint::to_biguint(&2).unwrap()));
-        assert!(is_prime(&ToBigUint::to_biguint(&3).unwrap()));
-        assert!(!is_prime(&ToBigUint::to_biguint(&4).unwrap()));
-        assert!(is_prime(&ToBigUint::to_biguint(&5).unwrap()));
-        assert!(!is_prime(&ToBigUint::to_biguint(&6).unwrap()));
-        assert!(is_prime(&ToBigUint::to_biguint(&7).unwrap()));
-        assert!(!is_prime(&ToBigUint::to_biguint(&9).unwrap()));
-        assert!(is_prime(&ToBigUint::to_biguint(&13).unwrap()));
+        assert!(!is_prime(&BigUint::from(0u64)));
+        assert!(!is_prime(&BigUint::from(1u64)));
+        assert!(is_prime(&BigUint::from(2u64)));
+        assert!(is_prime(&BigUint::from(3u64)));
+        assert!(!is_prime(&BigUint::from(4u64)));
+        assert!(is_prime(&BigUint::from(5u64)));
+        assert!(!is_prime(&BigUint::from(6u64)));
+        assert!(is_prime(&BigUint::from(7u64)));
+        assert!(!is_prime(&BigUint::from(9u64)));
+        assert!(is_prime(&BigUint::from(13u64)));
         assert!(is_prime(&"104743".parse().unwrap())); // A known prime
     }
 
     #[test]
     fn test_next_prime() {
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&0).unwrap()),
-            ToBigUint::to_biguint(&2).unwrap()
+            next_prime(&BigUint::from(0u64)),
+            BigUint::from(2u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&1).unwrap()),
-            ToBigUint::to_biguint(&2).unwrap()
+            next_prime(&BigUint::from(1u64)),
+            BigUint::from(2u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&2).unwrap()),
-            ToBigUint::to_biguint(&2).unwrap()
+            next_prime(&BigUint::from(2u64)),
+            BigUint::from(2u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&3).unwrap()),
-            ToBigUint::to_biguint(&3).unwrap()
+            next_prime(&BigUint::from(3u64)),
+            BigUint::from(3u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&4).unwrap()),
-            ToBigUint::to_biguint(&5).unwrap()
+            next_prime(&BigUint::from(4u64)),
+            BigUint::from(5u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&10).unwrap()),
-            ToBigUint::to_biguint(&11).unwrap()
+            next_prime(&BigUint::from(10u64)),
+            BigUint::from(11u64)
         );
         assert_eq!(
-            next_prime(&ToBigUint::to_biguint(&13).unwrap()),
-            ToBigUint::to_biguint(&13).unwrap()
+            next_prime(&BigUint::from(13u64)),
+            BigUint::from(13u64)
         );
         assert_eq!(
             next_prime(&"104740".parse().unwrap()),
