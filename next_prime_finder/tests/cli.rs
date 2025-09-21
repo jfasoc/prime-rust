@@ -53,3 +53,15 @@ fn test_cli_one() {
         .success()
         .stdout("1 is 1 digit long\n1 is not prime, next prime is 2\nPrime is 1 more\n");
 }
+
+#[test]
+fn test_cli_two_args() {
+    let mut cmd = Command::cargo_bin("next_prime_finder").unwrap();
+    cmd.arg("1").arg("2").assert().failure();
+}
+
+#[test]
+fn test_cli_not_a_number() {
+    let mut cmd = Command::cargo_bin("next_prime_finder").unwrap();
+    cmd.arg("abc").assert().failure();
+}
