@@ -11,6 +11,10 @@ fn main() {
     }
 
     let num_str = &args[1];
+    let digits = num_str.len();
+    let digit_word = if digits == 1 { "digit" } else { "digits" };
+    println!("{num_str} is {digits} {digit_word} long");
+
     match num_str.parse::<BigUint>() {
         Ok(num) => {
             if is_prime(&num) {
@@ -18,6 +22,8 @@ fn main() {
             } else {
                 let next = next_prime(&num);
                 println!("{num} is not prime, next prime is {next}");
+                let diff = &next - &num;
+                println!("Prime is {diff} more");
             }
         }
         Err(_) => {
